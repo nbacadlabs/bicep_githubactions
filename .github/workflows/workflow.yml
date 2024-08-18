@@ -1,4 +1,4 @@
-name: deploy-toy-website
+name: Bicep deployment
 
 on: [workflow_dispatch]
 
