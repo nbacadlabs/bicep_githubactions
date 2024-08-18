@@ -13,7 +13,7 @@ jobs:
       with:
         client-id: ${{ secrets.CLIENT_ID }}
         tenant-id: ${{ secrets.TENANT_ID }}
-        subscription_id: ${{ secrets.SUBSCRIPTION_ID }}
+        subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
     - uses: azure/arm-deploy@v1
       with:
         resourceGroupName: NbRG
