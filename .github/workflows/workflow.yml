@@ -14,8 +14,8 @@ jobs:
         # auth-type: IDENTITY
         client-id: ${{ secrets.CLIENT_ID }}
         tenant-id: ${{ secrets.TENANT_ID }}
-        # subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
-        allow-no-subscriptions: true
+        subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
+        # allow-no-subscriptions: true
         enable-AzPSSession: true
     - uses: azure/arm-deploy@v1
       with:
