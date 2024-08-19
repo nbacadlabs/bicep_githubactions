@@ -1,35 +1,15 @@
-trigger:
-- main
-
-name: Deploy Bicep files
-
-parameters:
-- name: azureServiceConnection
-  type: string
-  default: 'bicepcon'
-
-variables:
-  vmImageName: 'ubuntu-latest'
-  resourceGroupName: 'NbRG'
-  location: 'eastus'
-  templateFile: './deploy/main.bicep'
-  csmParametersFile: './deploy/params.json'
+trigger: none
 
 pool:
-  vmImage: $(vmImageName)
+  vmImage: ubuntu-latest
 
-steps:
-- task: AzureResourceManagerTemplateDeployment@3
-  inputs:
-    deploymentScope: 'Resource Group'
-    azureSubscription: '${{ parameters.azureServiceConnection }}'
-    action: 'Create Or Update Resource Group'
-    resourceGroupName: '$(resourceGroupName)'
-    location: '$(location)'
-    templateLocation: 'Linked artifact'
-    csmFile: '$(templateFile)'
-    csmParametersFile: '$(csmParametersFile)'
-    overrideParameters: '-storageAccountType Standard_LRS'
-    deploymentMode: 'Incremental'
-    deploymentName: 'DeployPipelineTemplate'
-
+jobs:
+- job:
+  steps:
+  - script: echo Hello, world!
+    displayName: 'Run a one-line script'
+  
+  - script: |
+      echo We'll add more steps soon.
+      echo For example, we'll add our Bicep deployment step.
+    displayName: 'Run a multi-line script'
