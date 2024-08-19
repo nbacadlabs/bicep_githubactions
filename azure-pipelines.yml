@@ -10,8 +10,8 @@ parameters:
 
 variables:
   vmImageName: 'ubuntu-latest'
-  resourceGroupName: 'exampleRG'
-  location: '<your-resource-group-location>'
+  resourceGroupName: 'NbRG'
+  location: 'eastus'
   templateFile: './main.bicep'
   csmParametersFile: '.params.json'
 
