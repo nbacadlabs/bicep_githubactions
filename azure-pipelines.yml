@@ -1,0 +1,34 @@
+trigger:
+- main
+
+name: Deploy Bicep files
+
+parameters:
+- name: azureServiceConnection
+  type: string
+  default: 'bicepcon'
+
+variables:
+  vmImageName: 'ubuntu-latest'
+  resourceGroupName: 'NbRG'
+  location: 'eastus'
+  templateFile: './main.bicep'
+  csmParametersFile: '.params.json'
+
+pool:
+  vmImage: $(vmImageName)
+
+steps:
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureSubscription: '${{ parameters.azureServiceConnection }}'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: '$(resourceGroupName)'
+    location: '$(location)'
+    templateLocation: 'Linked artifact'
+    csmFile: '$(templateFile)'
+    csmParametersFile: '$(csmParametersFile)'
+    overrideParameters: '-storageAccountType Standard_LRS'
+    deploymentMode: 'Incremental'
+    deploymentName: 'DeployPipelineTemplate'
