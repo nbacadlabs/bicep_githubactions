@@ -1,28 +1,28 @@
-name: Bicep deployment
+# name: Bicep deployment
 
-on: [push]
+# on: [push]
 
-permissions:
-  id-token: write
-  contents: read
+# permissions:
+#   id-token: write
+#   contents: read
 
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v3
+#     - uses: azure/login@v1
+#       with:
+#         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - uses: azure/arm-deploy@v1
-      name: Run preflight validation
-      with:
-        resourceGroupName: NbRG
-        template: ./deploy/main.bicep
-        parameters: ./deploy/params.json
-        deploymentMode: Validate
+#     - uses: azure/arm-deploy@v1
+#       name: Run preflight validation
+#       with:
+#         resourceGroupName: NbRG
+#         template: ./deploy/main.bicep
+#         parameters: ./deploy/params.json
+#         deploymentMode: Validate
 
 
 
