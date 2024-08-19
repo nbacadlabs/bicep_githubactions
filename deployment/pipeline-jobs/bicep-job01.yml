@@ -1,0 +1,19 @@
+jobs:
+- job: State_Resources_Job
+  pool:
+    vmImage: 'Ubuntu'
+  
+  steps:
+   #create resources for terraform state:
+  - task: AzureCLI@2
+    displayName: Create State Resources
+    inputs:
+      azureSubscription: '$(AZURE_SUBSCRIPTION)'
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        az deployment group create \
+        --name nbBiceDeployment \
+        --resource-group NbRG \
+        --template-file ../bicep/main.bicep \
+        --parameters ./bicep/variables/parameters.json
