@@ -1,22 +1,48 @@
-name: Bicep deployment
-
-on: [workflow_dispatch]
-
-permissions:
-  id-token: write
-  contents: read
-
+name: learn-github-actions
+on: [push]
 jobs:
-  deploy:
+  validate:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - run: echo "Here is where you'd perform the validation steps."
+  deployUS: 
+    runs-on: windows-latest
+    needs: validate
+    steps:
+      - run: echo "Here is where you'd perform the steps to deploy to the US region."
+  deployEurope: 
+    runs-on: ubuntu-latest
+    needs: validate
+    steps:
+      - run: echo "Here is where you'd perform the steps to deploy to the European region."
 
-    - uses: azure/arm-deploy@v1
-      with:
-        resourceGroupName: NbRG
-        template: ./deploy/main.bicep
-        parameters: ./deploy/params.json
+
+
+
+
+
+
+
+# name: Bicep deployment
+
+# on: [workflow_dispatch]
+
+# permissions:
+#   id-token: write
+#   contents: read
+
+
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v3
+#     - uses: azure/login@v1
+#       with:
+#         creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+#     - uses: azure/arm-deploy@v1
+#       with:
+#         resourceGroupName: NbRG
+#         template: ./deploy/main.bicep
+#         parameters: ./deploy/params.json
