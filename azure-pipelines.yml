@@ -12,8 +12,8 @@ variables:
   vmImageName: 'ubuntu-latest'
   resourceGroupName: 'NbRG'
   location: 'eastus'
-  templateFile: './main.bicep'
-  csmParametersFile: '.params.json'
+  templateFile: './deploy/main.bicep'
+  csmParametersFile: './deploy/params.json'
 
 pool:
   vmImage: $(vmImageName)
