@@ -13,7 +13,8 @@ parameters:
   type: string
   default:  bicepcon
 - name: AzServiceConn
-  azureServiceConnection: 'bicepcon'
+  type: string
+  default: bicepcon
 
 variables:
   TERRAENV: ${{ parameters.environment }}
