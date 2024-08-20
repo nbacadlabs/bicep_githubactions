@@ -11,6 +11,8 @@ jobs:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
+        az config set bicep.use_binary_from_path=False
+        az bicep install
         az deployment group create \
         --name nbBiceDeployment \
         --resource-group NbRG \
