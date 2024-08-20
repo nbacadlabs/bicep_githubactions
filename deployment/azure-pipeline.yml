@@ -12,11 +12,13 @@ parameters:
 - name: AZ_DEVOPS_CONN
   type: string
   default:  bicepcon
+- name: AzServiceConn
+  azureServiceConnection: 'bicepcon'
 
 variables:
   TERRAENV: ${{ parameters.environment }}
   LOCATION: ${{ parameters.location }}
-  AZ_DEVOPS_SVCONNECTION_CLIENTID: ${{ parameters.AZ_DEVOPS_CONN }}
+  AZURE_CONN: ${{ parameters.AzServiceConn }}
 
 stages:
 ### TERRAFORM STATE RESOURCES ###
