@@ -14,5 +14,5 @@ jobs:
         az deployment group create \
         --name nbBiceDeployment \
         --resource-group NbRG \
-        --template-file ./bicep/main.bicep \
-        --parameters ./bicep/variables/parameters.json
+        --template-file ../bicep/main.bicep \
+        --parameters ../bicep/parameters.json
