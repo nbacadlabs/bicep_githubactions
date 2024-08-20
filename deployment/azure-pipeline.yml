@@ -4,14 +4,14 @@ parameters:
 - name: environment
   displayName: Terraform Environment (only alphanumeric and dashes)
   type: string
-    dev
+  default: dev
 - name: location
   displayName: Location
   type: string
-    eastus
+  default: eastus
 - name: AZ_DEVOPS_CONN
   type: string
-    bicepcon
+  default:  bicepcon
 
 variables:
   TERRAENV: ${{ parameters.environment }}
