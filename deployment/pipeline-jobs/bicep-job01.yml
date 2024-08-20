@@ -1,7 +1,6 @@
 jobs:
 - job: State_Resources_Job
-  pool:
-    vmImage: 'Ubuntu'
+  pool: devops
   
   steps:
    #create resources for terraform state:
