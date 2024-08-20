@@ -22,4 +22,4 @@ stages:
 ### TERRAFORM STATE RESOURCES ###
 - stage: bicep_job_01_Network_Implementation
   jobs:
-    - template: ./deployment/pipeline-jobs/bicep-job01.yml
+    - template: ./pipeline-jobs/bicep-job01.yml
